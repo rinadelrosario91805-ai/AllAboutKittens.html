@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All About Kittens</title>
+
+<!-- Link to external CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+    <div class="loader">🐱 Loading...</div>
+</div>
+
+<!-- HEADER -->
+<header id="home">
+    <h1>🐱 All About Kittens</h1>
+    <p>A cute guide to caring for kittens</p>
+</header>
+
+<!-- NAVIGATION BAR -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#growth">Growth</a>
+    <a href="#care">Care</a>
+    <a href="#gallery">Gallery</a>
+</nav>
+
+<!-- Dark mode toggle -->
+<button onclick="toggleMode()">🌙 Toggle Dark Mode</button>
+
+<!-- Background music online -->
+<audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+</audio>
+<button onclick="playMusic()">🎵 Play Music</button>
+
+<!-- GROWTH SECTION -->
+<section id="growth" class="hidden">
+    <h2>Kitten Growth Stages</h2>
+    <div class="cards">
+        <div class="card">Week 1<br>Crawling</div>
+        <div class="card">Week 2<br>Eyes opening</div>
+        <div class="card">Week 3-4<br>Walking</div>
+        <div class="card">Week 5+<br>Playing</div>
+    </div>
+</section>
+
+<!-- CARE SECTION -->
+<section id="care" class="hidden">
+    <h2>Care Tips</h2>
+    <div class="cards">
+        <div class="card">Proper Feeding</div>
+        <div class="card">Keep Warm</div>
+        <div class="card">Clean Space</div>
+    </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section id="gallery" class="hidden gallery">
+    <h2>Gallery</h2>
+    <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Cute Kitten 1">
+    <img src="https://images.unsplash.com/photo-1561948955-5703a36b6a4b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Cute Kitten 2">
+    <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Cute Kitten 3">
+    <img src="https://images.unsplash.com/photo-1592194996363-7d2bfb9bfa1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Cute Kitten 4">
+</section>
+
+<button onclick="showMessage()">Click Me 🐾</button>
+
+<footer>
+    <p>Made by: Rina Del Rosario</p>
+</footer>
+
+<!-- CUSTOM CURSOR -->
+<div id="cursor"></div>
+
+<!-- Link to external JS -->
+<script src="script.js"></script>
+
+</body>
+</html>
+/* BODY & FONT */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff5f7;
+    margin: 0;
+    transition: 0.3s;
+    cursor: none; /* hide default cursor for custom cursor */
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* HEADER */
+header {
+    background: #ffb6c1;
+    text-align: center;
+    padding: 25px;
+}
+
+/* NAVIGATION */
+nav {
+    background: #ffc0cb;
+    text-align: center;
+    padding: 10px;
+}
+
+nav a {
+    margin: 15px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: white;
+}
+
+nav a.active {
+    color: hotpink;
+    text-decoration: underline;
+}
+
+/* BUTTONS */
+button {
+    display: block;
+    margin: 15px auto;
+    padding: 10px 20px;
+    background: pink;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: hotpink;
+    color: white;
+}
+
+/* SECTIONS */
+section {
+    padding: 30px;
+    text-align: center;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 150px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    animation: float 3s ease-in-out infinite;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px pink;
+}
+
+/* GALLERY */
+.gallery img {
+    width: 150px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+/* FOOTER */
+footer {
+    background: #ffb6c1;
+    text-align: center;
+    padding: 10px;
+}
+
+/* DARK MODE */
+.dark-mode {
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.dark-mode header,
+.dark-mode nav,
+.dark-mode footer {
+    background-color: #333;
+}
+
+.dark-mode .card {
+    background-color: #444;
+}
+
+/* SCROLL ANIMATION */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FLOATING CARDS */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* PRELOADER */
+#preloader {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#fff5f7;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.loader {
+    font-size: 2rem;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+}
+
+/* CUSTOM CURSOR */
+#cursor {
+    width: 30px;
+    height: 30px;
+    position: fixed;
+    pointer-events: none;
+    background-image: url('https://i.imgur.com/2OaOZ4r.png');
+    background-size: cover;
+    transform: translate(-50%, -50%);
+    z-index: 10000;
+}
+// DARK MODE TOGGLE
+function toggleMode() {
+    document.body.classList.toggle("dark-mode");
+}
+
+// FUN ALERT BUTTON
+function showMessage() {
+    alert("Meow! Take care of kittens 🐱");
+}
+
+// SCROLL ANIMATION
+const elements = document.querySelectorAll('.hidden');
+window.addEventListener('scroll', () => {
+    elements.forEach(el => {
+        const position = el.getBoundingClientRect().top;
+        const screenHeight = window.innerHeight;
+        if (position < screenHeight - 100) {
+            el.classList.add('show');
+        }
+    });
+});
+
+// PLAY BACKGROUND MUSIC
+function playMusic() {
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.5;
+    music.play();
+}
+
+// PRELOADER
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    preloader.style.display = 'none';
+});
+
+// CUSTOM CURSOR
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+// NAV HIGHLIGHT ON SCROLL
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 60) {
+            current = section.getAttribute('id');
+        }
+    });
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+});
